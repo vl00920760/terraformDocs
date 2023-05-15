@@ -30,7 +30,7 @@ pipeline {
             command:
             - cat
             tty: true
-          - name: terraformDocs
+          - name: terraformdocs
             image: jed.ocir.io/axnfm4jb3i73/terraform-docs:latest
             command:
             - cat
@@ -80,7 +80,7 @@ pipeline {
    
  stage("check terraform-docs") {
       steps {
-        container('terraformDocs') {
+        container('terraformdocs') {
           script{
                     sh """
                   echo "if terraform-docs present"
@@ -95,7 +95,7 @@ pipeline {
      stage("run terrafrom-docs) {
       steps {
         script {
-          container('terraformDocs') {
+          container('terraformdocs') {
                 sh """
                   terraform-docs markdown . | tee README.md
                 """
